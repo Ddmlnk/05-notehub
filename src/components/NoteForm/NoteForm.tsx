@@ -26,7 +26,10 @@ export default function NoteForm({ onClose }: NoteFormProps) {
     mutationFn: createNote,
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["tasks"] }),
   });
-  const handleSubmit = (values: NoteFormValues, { resetForm }) => {
+  const handleSubmit = (
+    values: NoteFormValues,
+    { resetForm }: FormikHelpers<NoteFormValues>,
+  ) => {
     mutate(values, {
       onSuccess: () => {
         resetForm();
