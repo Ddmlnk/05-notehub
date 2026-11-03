@@ -2,20 +2,20 @@ import { useEffect, type MouseEvent, type ReactNode } from "react";
 import css from "./Modal.module.css";
 import { createPortal } from "react-dom";
 interface ModalProps {
-  onClose: (x: boolean) => void;
+  onClose: () => void;
   children: ReactNode;
 }
 
 export default function Modal({ onClose, children }: ModalProps) {
   const handleBackdropClick = (e: MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
-      onClose(false);
+      onClose();
     }
   };
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "escape") {
-        onClose(false);
+      if (e.key === "Escape") {
+        onClose();
       }
     };
     document.addEventListener("keydown", handleKeyDown);

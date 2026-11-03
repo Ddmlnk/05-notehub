@@ -6,7 +6,7 @@ import type { NoteFormValues } from "../../types/note";
 import * as Yup from "yup";
 
 interface NoteFormProps {
-  onClose: (x: boolean) => void;
+  onClose: () => void;
 }
 
 const NoteSchema = Yup.object().shape({
@@ -33,7 +33,7 @@ export default function NoteForm({ onClose }: NoteFormProps) {
     mutate(values, {
       onSuccess: () => {
         resetForm();
-        onClose(false);
+        onClose();
       },
     });
   };
@@ -79,7 +79,7 @@ export default function NoteForm({ onClose }: NoteFormProps) {
           <button
             type="button"
             className={css.cancelButton}
-            onClick={() => onClose(false)}
+            onClick={() => onClose()}
           >
             Cancel
           </button>
